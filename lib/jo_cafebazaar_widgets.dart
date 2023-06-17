@@ -1,7 +1,13 @@
 library jo_cafebazaar_widgets;
 
-/// A Calculator.
-class Calculator {
-  /// Returns [value] plus 1.
-  int addOne(int value) => value + 1;
+import 'package:cafebazaar_flutter/cafebazaar_flutter.dart';
+
+Future<dynamic> getMyOtherApps(String packageName) async {
+  final bazaar = CafebazaarFlutter.instance;
+  await bazaar.openDeveloperPage(packageName);
+}
+
+Future<dynamic> makeCommentToApp(String packageName) async {
+  final bazaar = CafebazaarFlutter.instance;
+  await bazaar.openCommentForm(packageName);
 }
