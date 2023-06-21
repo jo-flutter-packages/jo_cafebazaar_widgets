@@ -1,13 +1,48 @@
 library jo_cafebazaar_widgets;
 
-import 'package:cafebazaar_flutter/cafebazaar_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
+import 'package:jo_cafebazaar_widgets/contracts/publishing_platform_features.dart';
 
-Future<dynamic> getMyOtherApps(String developerId) async {
-  final bazaar = CafebazaarFlutter.instance;
-  await bazaar.openDeveloperPage(developerId);
+class CafeBazaar extends PublishingPlatformFeatures {
+  final String developerId;
+  final String packageName;
+
+  CafeBazaar({
+    required this.developerId,
+    required this.packageName,
+  });
+
+  @override
+  Future<dynamic> getMyOtherApps() async {
+    var url = Uri.parse("bazaar://collection?slug=by_author&aid=$developerId");
+    if (!await launchUrl(url)) {}
+  }
+
+  @override
+  Future<dynamic> makeCommentToApp() async {
+    var url = Uri.parse("bazaar://details?id=$packageName");
+    if (!await launchUrl(url)) {}
+  }
 }
 
-Future<dynamic> makeCommentToApp(String packageName) async {
-  final bazaar = CafebazaarFlutter.instance;
-  await bazaar.openCommentForm(packageName);
+class Myket extends PublishingPlatformFeatures {
+  final String developerId;
+  final String packageName;
+
+  Myket({
+    required this.developerId,
+    required this.packageName,
+  });
+
+  @override
+  Future getMyOtherApps() async {
+    var url = Uri.parse("myket://developer/$developerId");
+    if (!await launchUrl(url)) {}
+  }
+
+  @override
+  Future makeCommentToApp() async {
+    var url = Uri.parse("myket://comment?id=$packageName");
+    if (!await launchUrl(url)) {}
+  }
 }
