@@ -1,0 +1,4 @@
+enum Platforms {
+  Cafebazaar,
+  Myket,
+}

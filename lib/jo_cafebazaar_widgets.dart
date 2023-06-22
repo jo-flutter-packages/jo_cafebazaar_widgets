@@ -1,48 +1,59 @@
-library jo_cafebazaar_widgets;
+library jo_publishing_platform_features;
 
-import 'package:url_launcher/url_launcher.dart';
-import 'package:jo_cafebazaar_widgets/contracts/publishing_platform_features.dart';
+import 'package:jo_publishing_platform_features/platform/cafebazaar.dart';
+import 'package:jo_publishing_platform_features/contracts/publishing_platform_features.dart';
+import 'package:jo_publishing_platform_features/platform/myket.dart';
 
-class CafeBazaar extends PublishingPlatformFeatures {
+import 'contracts/platforms_enum.dart';
+
+class PublishingPlatform extends PublishingPlatformFeatures {
+  final Platforms? platform;
   final String developerId;
   final String packageName;
 
-  CafeBazaar({
-    required this.developerId,
-    required this.packageName,
+  PublishingPlatform(
+    this.developerId,
+    this.packageName, {
+    required this.platform,
   });
 
   @override
   Future<dynamic> getMyOtherApps() async {
-    var url = Uri.parse("bazaar://collection?slug=by_author&aid=$developerId");
-    if (!await launchUrl(url)) {}
+    switch (platform) {
+      case Platforms.Cafebazaar:
+        await CafeBazaar(developerId: developerId, packageName: packageName)
+            .getMyOtherApps();
+        break;
+      case Platforms.Myket:
+        await Myket(developerId: developerId, packageName: packageName)
+            .getMyOtherApps();
+        break;
+      default:
+        await CafeBazaar(developerId: developerId, packageName: packageName)
+            .getMyOtherApps();
+        await Myket(developerId: developerId, packageName: packageName)
+            .getMyOtherApps();
+        break;
+    }
   }
 
   @override
   Future<dynamic> makeCommentToApp() async {
-    var url = Uri.parse("bazaar://details?id=$packageName");
-    if (!await launchUrl(url)) {}
-  }
-}
-
-class Myket extends PublishingPlatformFeatures {
-  final String developerId;
-  final String packageName;
-
-  Myket({
-    required this.developerId,
-    required this.packageName,
-  });
-
-  @override
-  Future getMyOtherApps() async {
-    var url = Uri.parse("myket://developer/$developerId");
-    if (!await launchUrl(url)) {}
-  }
-
-  @override
-  Future makeCommentToApp() async {
-    var url = Uri.parse("myket://comment?id=$packageName");
-    if (!await launchUrl(url)) {}
+    switch (platform) {
+      case Platforms.Cafebazaar:
+        await CafeBazaar(developerId: developerId, packageName: packageName)
+            .makeCommentToApp();
+        break;
+      case Platforms.Myket:
+        await Myket(developerId: developerId, packageName: packageName)
+            .makeCommentToApp();
+        break;
+      default:
+        await CafeBazaar(developerId: developerId, packageName: packageName)
+            .makeCommentToApp();
+        await Myket(developerId: developerId, packageName: packageName)
+            .makeCommentToApp();
+        break;
+    }
   }
 }

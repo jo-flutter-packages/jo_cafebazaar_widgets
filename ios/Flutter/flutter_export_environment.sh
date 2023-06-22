@@ -1,7 +1,7 @@
 #!/bin/sh
 # This is a generated file; do not edit or check into version control.
 export "FLUTTER_ROOT=C:\flutter"
-export "FLUTTER_APPLICATION_PATH=D:\WorkingSpace\flutter_packages\jo_cafebazaar_widgets"
+export "FLUTTER_APPLICATION_PATH=D:\WorkingSpace\flutter_packages\jo_publishing_platform_features"
 export "COCOAPODS_PARALLEL_CODE_SIGN=true"
 export "FLUTTER_TARGET=lib\main.dart"
 export "FLUTTER_BUILD_DIR=build"

@@ -1,8 +1,8 @@
-name: jo_cafebazaar_widgets
+name: jo_publishing_platform_features
 description: A new Flutter package project.
-version: 0.0.2
+version: 0.0.4
 publish_to: none
-homepage: https://github.com/jo-flutter-packages/jo_cafebazaar_widgets.git
+homepage: https://github.com/jo-flutter-packages/jo_publishing_platform_features.git
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
