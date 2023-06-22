@@ -7,13 +7,13 @@ import 'package:jo_publishing_platform_features/platform/myket.dart';
 import 'contracts/platforms_enum.dart';
 
 class JOPublishingPlatform extends PublishingPlatformFeatures {
-  final Platforms? platform;
+  final Platforms platform;
   final String developerId;
   final String packageName;
 
-  JOPublishingPlatform(
-    this.developerId,
-    this.packageName, {
+  JOPublishingPlatform({
+    required this.developerId,
+    required this.packageName,
     required this.platform,
   });
 
