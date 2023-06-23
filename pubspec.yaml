@@ -2,7 +2,7 @@ name: jo_publishing_platform_features
 description: A new Flutter package project.
 version: 0.0.4
 publish_to: none
-homepage: https://github.com/jo-flutter-packages/jo_publishing_platform_features.git
+homepage: https://github.com/jo-flutter-packages/jo_cafebazaar_widgets.git
 
 environment:
   sdk: '>=2.19.6 <3.0.0'
@@ -11,7 +11,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  # cafebazaar_flutter: ^1.0.2
   url_launcher: ^6.1.11
 
 dev_dependencies:
